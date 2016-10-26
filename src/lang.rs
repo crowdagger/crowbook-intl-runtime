@@ -22,3 +22,11 @@ pub fn set_lang<S>(lang: S)
 pub fn __get_lang() -> RwLockReadGuard<'static, String> {
     LANG.read().unwrap()
 }
+
+
+#[test]
+fn lang() {
+    assert_eq!(*__get_lang(), "en");
+    set_lang("fr");
+    assert_eq!(*__get_lang(), "fr");
+}
