@@ -9,7 +9,10 @@ lazy_static! {
     pub static ref LANG: RwLock<String> = RwLock::new(String::from("en"));
 }
 
-/// Sets the lang
+/// Sets the lang that the program should be using.
+///
+/// After this call, all strings that has been internationalized using `lformat` should
+/// return the translation in this language (if available).
 pub fn set_lang<S>(lang: S)
     where S: Into<String> {
     *LANG.write().unwrap() = lang.into();
